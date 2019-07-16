@@ -28,7 +28,7 @@ function embaralhar(lista) {
   
 setTimeout(function () {
     for (let carta of cartas) {
-      carta.style.backgroundImage = 'url("imagens/caixa.jpg")';
+      carta.style.backgroundImage = 'url("imagens/caixa.png")';
       carta.onclick = function () {
         carta.style.backgroundImage = `url("imagens/${imagens[Number(carta.id)]}")`;
         if (cartaVirada && cartaVirada.id !== carta.id) {
@@ -38,8 +38,8 @@ setTimeout(function () {
               carta.onclick = null;
             }
             else {
-              carta.style.backgroundImage = 'url("imagens/caixa.jpg")';
-              cartaVirada.style.backgroundImage = 'url("imagens/caixa.jpg")';
+              carta.style.backgroundImage = 'url("imagens/caixa.png")';
+              cartaVirada.style.backgroundImage = 'url("imagens/caixa.png")';
             }
             cartaVirada = null;
           }, 1500)
