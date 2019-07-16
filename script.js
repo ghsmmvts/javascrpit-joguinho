@@ -26,18 +26,27 @@ function embaralhar(lista) {
     cartas[i].style.backgroundImage = `url("imagens/${imagens[i]}")`;
   }
   
-  setTimeout(function(){
-    for(let carta of cartas){
-      carta.style.backgroundImage = 'url("imagens/caixa.png")';
-      carta.onclik = function(){
-
-          if(cartaVirada && cartaVirada.id !== carta.id){
-
+setTimeout(function () {
+    for (let carta of cartas) {
+      carta.style.backgroundImage = 'url("imagens/caixa.jpg")';
+      carta.onclick = function () {
+        carta.style.backgroundImage = `url("imagens/${imagens[Number(carta.id)]}")`;
+        if (cartaVirada && cartaVirada.id !== carta.id) {
+          setTimeout(function () {
+            if (cartaVirada.style.backgroundImage === carta.style.backgroundImage) {
+              cartaVirada.onclick = null;
+              carta.onclick = null;
+            }
+            else {
+              carta.style.backgroundImage = 'url("imagens/caixa.jpg")';
+              cartaVirada.style.backgroundImage = 'url("imagens/caixa.jpg")';
+            }
+            cartaVirada = null;
+          }, 1500)
         }
-        else{}
-
-          carta.style.backgroundImage = 'url("imagens/${imagens[Number(carta.id)]}")';
-          carta.onclik = null;
+        else {
+          cartaVirada = carta;
+        }
       }
     }
-  }, 3000);  
+  }, 3000);
